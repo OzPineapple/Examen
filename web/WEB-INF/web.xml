@@ -28,6 +28,10 @@
         <servlet-name>AgrStock</servlet-name>
         <servlet-class>Servlets.AgrStock</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditCosto</servlet-name>
+        <servlet-class>Servlets.EditCosto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogIn</servlet-name>
         <url-pattern>/LogIn</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>AgrStock</servlet-name>
         <url-pattern>/AgrStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCosto</servlet-name>
+        <url-pattern>/EditCosto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -413,4 +413,30 @@ public class UsuarioDao {
         }
         return e;
     }
+    //Cambia el costo del item
+    public static int changeCostoItem(double costo, int id_item){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="UPDATE item SET costo=? WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setDouble(1, costo);
+            ps.setInt(2, id_item);
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (changeCostoItem)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (changeCostoItem)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
 }
