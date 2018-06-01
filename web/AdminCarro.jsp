@@ -129,7 +129,8 @@
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#stock<%=in%>"><i class="material-icons">add</i></button>
                                         <div id="stock<%=in%>" class="collapse">
                                             <form method="post" action="AgrStock">
-                                                <input type="number" maxlength="<%=maxlength%>" placeholder="Agregar al stock" name="agregar" min="1" max="<%=max%>" required>
+                                                <input type="hidden" name="id" value="<%=i.getId_item()%>">
+                                                <input type="number" maxlength="<%=maxlength%>" placeholder="Agregar al stock" name="cant" min="1" max="<%=max%>" required>
                                                 <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span> Ok</button>
                                             </form>
                                         </div>
@@ -139,7 +140,8 @@
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#costo<%=in%>"><i class="material-icons">edit</i></button>
                                         <div id="costo<%=in%>" class="collapse">
                                             <form method="post" action="EditCosto">
-                                                $<input type="number" step=".01" placeholder="Nuevo costo" name="agregar" min="0.1" max="1000000" maxlength="7" required>
+                                                <input type="hidden" name="id" value="<%=i.getId_item()%>">
+                                                $<input type="number" step=".01" placeholder="Nuevo costo" name="costo" min="0.1" max="1000000" maxlength="7" required>
                                                 <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span> Ok</button>
                                             </form>
                                         </div>

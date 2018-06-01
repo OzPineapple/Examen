@@ -1,15 +1,19 @@
 package Servlets;
 
+import Clases.Carro;
 import Clases.Sesion;
 import Clases.Usuario;
 import Dao.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RegUs2 extends HttpServlet {
     @Override
@@ -45,6 +49,11 @@ public class RegUs2 extends HttpServlet {
                     Cookie id_tipoCookie = new Cookie("id_tipo",String.valueOf(id_tipo));
                     Cookie nomCookie = new Cookie("user",s.getUser());
                     System.out.println("Tipo Usuario");
+                    UsuarioDao.DropTableItems();
+                    UsuarioDao.CreateViewItems1();
+                    List<Carro> carro = new ArrayList<Carro>();
+                    HttpSession sesion=request.getSession(true);
+                    sesion.setAttribute("carro", carro);
                     response.addCookie(id_usCookie);
                     response.addCookie(id_tipoCookie);
                     response.addCookie(nomCookie);

@@ -272,11 +272,11 @@ public class UsuarioDao {
                 e.setCosto(rs.getDouble(4));
             }
 
-            System.out.println("Conexion exitosa... (getItem)");
+            System.out.println("Conexion exitosa... (getVItem)");
             
             con.close();        
         }catch(Exception d){
-            System.out.println("No hay conexion... (getItem)");
+            System.out.println("No hay conexion... (getVItem)");
             System.out.println(d.getMessage());
             System.out.println(d.getStackTrace());
         }
@@ -332,6 +332,32 @@ public class UsuarioDao {
         }
         return estatus;
     }
+    //Agrega cierta cantidad al stock del item
+    public static int AgregarStock(int cantidad, int id_item){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="UPDATE item SET stock=stock+? WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, cantidad);
+            ps.setInt(2, id_item);
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (AgregarStock)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (AgregarStock)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
     public static int FinalizarCompra(Carro e){
         int estatus=0;
         
@@ -356,5 +382,35 @@ public class UsuarioDao {
             System.out.println(d.getStackTrace());
         }
         return estatus;
+    }
+    //Obtiene los datos del item de la tabla item
+    public static Item getItem(int id_item){
+        Item e = new Item();
+                
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="SELECT * FROM item WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, id_item);
+            
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                e.setId_item(rs.getInt(1));
+                e.setItem(rs.getString(2));
+                e.setStock(rs.getInt(3));
+                e.setCosto(rs.getDouble(4));
+            }
+
+            System.out.println("Conexion exitosa... (getItem)");
+            
+            con.close();        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (getItem)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return e;
     }
 }
