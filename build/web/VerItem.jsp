@@ -24,6 +24,7 @@
             int id_item=0;
             String tipo="";
             int id_tipo=0;
+            Item e=new Item();
             try{
                 id_item=Integer.parseInt(id);
             if (ck.length!=4) {
@@ -44,7 +45,7 @@
                         }
                     }
                 }
-                Item e=UsuarioDao.getVItem(id_item);
+                e=UsuarioDao.getVItem(id_item);
                 if (e.getItem()==null) {
                     response.sendRedirect("error2.jsp");
                 }
@@ -64,7 +65,15 @@
                                 <tbody>
                                     <tr>
                                         <td>Cantidad</td>
-                                        <td><input type="number" name="cant" min="1" value="1" max="<%=e.getStock()%>" placeholder="Cantidad" style="width: 100px; border-color: gainsboro;"></td>
+                                        <td><input type="number" name="cant" id="cant" min="1" value="1" max="<%=e.getStock()%>" placeholder="Cantidad" style="width: 100px; border-color: gainsboro;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Costo Unitario</td>
+                                        <td>$ <%=e.getCosto()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suma</td>
+                                        <td><p id="suma"></p></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" align="center">
@@ -84,5 +93,17 @@
                 response.sendRedirect("error2.jsp");
             }
         %>
+        <script>
+            $("#cant").on("input", function(e) {
+                if (($("#cant").val())><%=e.getStock()%>) {
+                    $("#suma").text("Mas de lo disponible");
+                }
+                else{
+                    $("#suma").text("$ "+$(e.target).val()*<%=e.getCosto()%>)
+                }
+            });
+
+            $("#cant").trigger("input");
+        </script>
     </body>
 </html>

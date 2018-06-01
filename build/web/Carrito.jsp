@@ -116,7 +116,7 @@
                         <tr class="header">
                             <th>Producto</th>
                             <th>Stock</th>
-                            <th>Costo Por Pieza</th>
+                            <th>Precio Unitario</th>
                             <th></th>
                         </tr>
                         <%
