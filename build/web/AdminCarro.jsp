@@ -115,12 +115,35 @@
                             <th></th>
                         </tr>
                         <%
+                            int in=0;
                             for(Item i:items){
+                                in++;
+                                int max=16777215-i.getStock();
+                                String max2=String.valueOf(max);
+                                int maxlength=max2.length();
                         %>
                                 <tr>
                                     <td><%=i.getItem()%></td>
-                                    <td align="center"><%=i.getStock()%></td>
-                                    <td align="center">$ <%=i.getCosto()%></td>
+                                    <td align="center">
+                                        <%=i.getStock()%>
+                                        <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#stock<%=in%>"><i class="material-icons">add</i></button>
+                                        <div id="stock<%=in%>" class="collapse">
+                                            <form method="post" action="AgrStock">
+                                                <input type="number" maxlength="<%=maxlength%>" placeholder="Agregar al stock" name="agregar" min="1" max="<%=max%>" required>
+                                                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span> Ok</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        $ <%=i.getCosto()%>
+                                        <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#costo<%=in%>"><i class="material-icons">edit</i></button>
+                                        <div id="costo<%=in%>" class="collapse">
+                                            <form method="post" action="EditCosto">
+                                                $<input type="number" maxlength="<%=maxlength%>" placeholder="Nuevo costo" name="agregar" min="1" max="<%=max%>" required>
+                                                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span> Ok</button>
+                                            </form>
+                                        </div>
+                                    </td>
                                     <td align="right">
                                     <%
                                         if(i.getStock()<=0){
@@ -166,5 +189,14 @@
                     } 
                   }
                 }
+                $(document).ready(function () {
+                    function enforce_maxlength(event) {
+                        var t = event.target;
+                        if (t.hasAttribute('maxlength')) {
+                            t.value = t.value.slice(0, t.getAttribute('maxlength'));
+                        }
+                    }
+                    document.body.addEventListener('input', enforce_maxlength);
+                });
             </script>
 </html>

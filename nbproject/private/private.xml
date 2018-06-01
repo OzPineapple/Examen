@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/FinalizarCompra.java</file>
+            <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/VerCarro.jsp</file>
             <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Dao/UsuarioDao.java</file>
             <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/VerItem.jsp</file>
+            <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/LogOut.java</file>
+            <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/AdminCarro.jsp</file>
             <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/Carrito.jsp</file>
+            <file>file:/F:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/LogIn.java</file>
         </group>
     </open-files>
 </project-private>
