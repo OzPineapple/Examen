@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class EditCosto extends HttpServlet {
+public class ElimItem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,17 +22,17 @@ public class EditCosto extends HttpServlet {
             throws ServletException, IOException {
             Cookie[] ck = request.getCookies();
             String id=request.getParameter("id");
-            String cost=request.getParameter("costo");
             int id_item=0;
             String tipo="";
-            double costo=0;
             int id_tipo=0;
             try{
                 id_item=Integer.parseInt(id);
-                costo=Double.parseDouble(cost);
                 Item e=UsuarioDao.getItem(id_item);
                 if (e.getItem()==null) {
                     response.sendRedirect("error2.jsp");
+                }
+                else if(e.getStock()>0){
+                    response.sendRedirect("AdminCarro.jsp");
                 }
                 else{
                     for (Cookie cke:ck) {
@@ -49,7 +49,7 @@ public class EditCosto extends HttpServlet {
                             }
                         }
                     }
-                    int estatus=UsuarioDao.changeCostoItem(costo, id_item);
+                    int estatus=UsuarioDao.ElimItem(id_item);
                     if (estatus>0) {
                         response.sendRedirect("AdminCarro.jsp");
                     }

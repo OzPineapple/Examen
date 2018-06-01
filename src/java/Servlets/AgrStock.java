@@ -36,9 +36,6 @@ public class AgrStock extends HttpServlet {
                 if (e.getItem()==null) {
                     response.sendRedirect("error2.jsp");
                 }
-                else if(e.getStock()<1){
-                    response.sendRedirect("AdminCarro.jsp");
-                }
                 else{
                     for (Cookie cke:ck) {
                         if (cke.getName().equals("id_tipo")) {

@@ -150,7 +150,7 @@
                                     <%
                                         if(i.getStock()<=0){
                                     %>
-                                            <form method="post" action="ElimItem.jsp"><input type="hidden" name="id" value="<%=i.getId_item()%>"><button type="submit" class="btn btn-default btn-sm"><i class="material-icons">close</i></button></form>
+                                            <form method="post" action="ElimItem"><input type="hidden" name="id" value="<%=i.getId_item()%>"><button type="submit" class="btn btn-default btn-sm"><i class="material-icons">close</i></button></form>
                                     <%
                                         }
                                     %>

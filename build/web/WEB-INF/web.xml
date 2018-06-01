@@ -32,6 +32,10 @@
         <servlet-name>EditCosto</servlet-name>
         <servlet-class>Servlets.EditCosto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ElimItem</servlet-name>
+        <servlet-class>Servlets.ElimItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogIn</servlet-name>
         <url-pattern>/LogIn</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>EditCosto</servlet-name>
         <url-pattern>/EditCosto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ElimItem</servlet-name>
+        <url-pattern>/ElimItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

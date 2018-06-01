@@ -439,4 +439,28 @@ public class UsuarioDao {
         }
         return estatus;
     }
+    public static int ElimItem(int id_item){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="DELETE FROM item WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, id_item);
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (ElimItem)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (ElimItem)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
 }
