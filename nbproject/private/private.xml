@@ -5,7 +5,11 @@
         <group>
             <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/AgregarAlCarrito.java</file>
             <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/VerCarro.jsp</file>
+            <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/LogIn.java</file>
+            <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Dao/UsuarioDao.java</file>
+            <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/web/Carrito.jsp</file>
             <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Servlets/EliminarDeMiCarrito.java</file>
+            <file>file:/D:/Examen%203er%20Parcial%20PSW/ExamenFinalV1.0/src/java/Clases/Item.java</file>
         </group>
     </open-files>
 </project-private>
