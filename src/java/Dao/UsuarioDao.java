@@ -463,4 +463,29 @@ public class UsuarioDao {
         }
         return estatus;
     }
+    //Agrega un nuevo item a la tabla item
+    public static int AgregarItem(Item e){
+        int estatus=0;        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="INSERT INTO item(item,stock,costo) VALUES(?,?,?)";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setString(1, e.getItem());
+            ps.setInt(2, e.getStock());
+            ps.setDouble(3, e.getCosto());
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (AgregarItem)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (AgregarItem)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
 }
