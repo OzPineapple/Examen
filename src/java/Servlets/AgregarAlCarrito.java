@@ -61,11 +61,23 @@ public class AgregarAlCarrito extends HttpServlet {
                         }
                     }
                     carro=(ArrayList)sesion.getAttribute("carro");
-                    Carro c = new Carro();
-                    c.setCantidad(cantidad);
-                    c.setId_item(id_item);
-                    c.setItem(e.getItem());
-                    carro.add(c);
+                    int cantini=0;
+                    boolean exist=false;
+                    for (int i = 0; i < carro.size(); i++) {
+                        if (carro.get(i).getId_item()==id_item) {
+                            cantini=carro.get(i).getCantidad();
+                            carro.get(i).setCantidad(cantini+cantidad);
+                            exist=true;
+                            break;
+                        }
+                    }
+                    if (exist==false) {
+                        Carro c = new Carro();
+                        c.setCantidad(cantidad);
+                        c.setId_item(id_item);
+                        c.setItem(e.getItem());
+                        carro.add(c);
+                    }
                     response.sendRedirect("Carrito.jsp");
                 }
             }
