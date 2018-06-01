@@ -1,7 +1,8 @@
 package Clases;
 
 public class Item {
-    private int id_item,stock,costo;
+    private int id_item,stock;
+    private double costo;
     private String item;
 
     public int getId_item() {
@@ -28,11 +29,11 @@ public class Item {
         this.item = item;
     }
 
-    public int getCosto() {
+    public double getCosto() {
         return costo;
     }
 
-    public void setCosto(int costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
     

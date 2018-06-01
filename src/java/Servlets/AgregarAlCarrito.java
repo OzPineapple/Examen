@@ -78,7 +78,13 @@ public class AgregarAlCarrito extends HttpServlet {
                         c.setItem(e.getItem());
                         carro.add(c);
                     }
-                    response.sendRedirect("Carrito.jsp");
+                    int estatus=UsuarioDao.ElimStock(cantidad, id_item);
+                    if (estatus>0) {
+                        response.sendRedirect("Carrito.jsp");
+                    }
+                    else{
+                        response.sendRedirect("error2.jsp");
+                    }
                 }
             }
             catch(Exception ex){

@@ -49,8 +49,16 @@ public class EliminarDeMiCarrito extends HttpServlet {
                     }
                 }
                 carro=(ArrayList)sesion.getAttribute("carro");
-                carro.remove(index);
-                response.sendRedirect("VerCarro.jsp");
+                int cantidad=carro.get(index).getCantidad();
+                int id_item=carro.get(index).getId_item();
+                int estatus=UsuarioDao.DevolverStock(cantidad, id_item);
+                if (estatus>0) {
+                    carro.remove(index);
+                    response.sendRedirect("VerCarro.jsp");
+                }
+                else{
+                    response.sendRedirect("error2.jsp");
+                }
             }
             catch(Exception ex){
                 response.sendRedirect("error2.jsp");

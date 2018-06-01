@@ -1,5 +1,6 @@
 package Dao;
 
+import Clases.Carro;
 import Clases.Item;
 import Clases.Sesion;
 import Clases.Usuario;
@@ -216,7 +217,7 @@ public class UsuarioDao {
                 e.setId_item(rs.getInt(1));
                 e.setItem(rs.getString(2));
                 e.setStock(rs.getInt(3));
-                e.setCosto(rs.getInt(4));
+                e.setCosto(rs.getDouble(4));
                 lista.add(e);
             }            
             
@@ -258,5 +259,55 @@ public class UsuarioDao {
             System.out.println(d.getStackTrace());
         }
         return e;
+    }
+    public static int ElimStock(int cantidad, int id_item){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="UPDATE items SET stock=stock-? WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, cantidad);
+            ps.setInt(2, id_item);
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (ElimStock)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (ElimStock)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
+    public static int DevolverStock(int cantidad, int id_item){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="UPDATE items SET stock=stock+? WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, cantidad);
+            ps.setInt(2, id_item);
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (DevolverStock)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (DevolverStock)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
     }
 }

@@ -4,6 +4,7 @@
     Author     : Sarge
 --%>
 
+<%@page import="Dao.UsuarioDao"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Carro"%>
