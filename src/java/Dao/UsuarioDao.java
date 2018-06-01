@@ -206,7 +206,7 @@ public class UsuarioDao {
                 e.setId_item(rs.getInt(1));
                 e.setItem(rs.getString(2));
                 e.setStock(rs.getInt(3));
-                
+                e.setCosto(rs.getDouble(4));
                 lista.add(e);
             }            
             
