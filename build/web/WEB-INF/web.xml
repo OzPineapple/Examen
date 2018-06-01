@@ -20,6 +20,10 @@
         <servlet-name>EliminarDeMiCarrito</servlet-name>
         <servlet-class>Servlets.EliminarDeMiCarrito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FinalizarCompra</servlet-name>
+        <servlet-class>Servlets.FinalizarCompra</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogIn</servlet-name>
         <url-pattern>/LogIn</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>EliminarDeMiCarrito</servlet-name>
         <url-pattern>/EliminarDeMiCarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinalizarCompra</servlet-name>
+        <url-pattern>/FinalizarCompra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

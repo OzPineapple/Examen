@@ -46,6 +46,7 @@ public class LogIn extends HttpServlet {
                 Cookie id_tipoCookie = new Cookie("id_tipo",String.valueOf(id_tipo));
                 Cookie userCookie = new Cookie("user",e.getUser());
                 System.out.println("Tipo Usuario");
+                UsuarioDao.DropTableItems();
                 UsuarioDao.CreateViewItems1();
                 List<Carro> carro = new ArrayList<Carro>();
                 HttpSession sesion=request.getSession(true);

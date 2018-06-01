@@ -111,9 +111,66 @@
                 </tr>
                 <tr>
                     <td colspan="6" align="center">
-                        <form method="post" action="FinalizarCompra">
-                            <button type="submit" class="btn btn-default btn-sm">Finalizar compra <i class="material-icons">attach_money</i></button>
-                        </form>
+                        <div class="container">
+                            <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-default btn-sm" id="myBtn">Finalizar compra <i class="material-icons">attach_money</i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">¿Está seguro de finalizar su compra?</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Se le cobrara lo siguiente</p>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th style="text-align: center;">Cantidad</th>
+                                            <th style="text-align: center;">Costo Unitario</th>
+                                            <th style="text-align: center;">Suma</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%
+                                                double total2=0;
+                                                for (Carro e:carro) {
+                                                    Item item=new Item();
+                                                    item=UsuarioDao.getVItem(e.getId_item());
+                                            %>
+                                                <tr>
+                                                    <td><%=e.getItem()%></td>
+                                                    <td align="center"><%=e.getCantidad()%></td>
+                                                    <td align="center">$ <%=item.getCosto()%></td>
+                                                    <td align="center">$ <%=e.getCantidad()*item.getCosto()%></td>
+                                                    <%total2=total2+e.getCantidad()*item.getCosto();%>
+                                                </tr>
+                                            <%
+                                                }
+                                            %>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="right"><b>Total</b></td>
+                                                <td align="center">$ <%=total%></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <form method="post" action="FinalizarCompra">
+                                        <button type="submit" class="btn btn-default btn-sm" id="myBtn">Estoy seguro <span class="glyphicon glyphicon-ok"></span></button>
+                                    </form>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                         </tbody>
@@ -124,5 +181,12 @@
         <%
             }
         %>
+    <script>
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#myModal").modal();
+            });
+        });
+    </script>
     </body>
 </html>

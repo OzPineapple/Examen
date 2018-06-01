@@ -145,14 +145,35 @@ public class UsuarioDao {
         }
         return estatus;
     }
+    //Elimina si existe la tabla items
+    public static int DropTableItems(){
+        int estatus=0;        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="DROP TABLE IF EXISTS items";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (DropTableItems)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (DropTableItems)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
     //Crea la vista para cuando el usuario acaba de iniciar sesion
     public static int CreateViewItems1(){
         int estatus=0;        
         try{
             Connection con=UsuarioDao.getConnection();
             String q;
-            q="CREATE OR REPLACE VIEW items AS "
-                + "SELECT * FROM item";
+            q="CREATE TABLE items AS SELECT * FROM item";
 
             PreparedStatement ps=con.prepareStatement(q);
             estatus=ps.executeUpdate();
@@ -306,6 +327,31 @@ public class UsuarioDao {
         
         }catch(Exception d){
             System.out.println("No hay conexion... (DevolverStock)");
+            System.out.println(d.getMessage());
+            System.out.println(d.getStackTrace());
+        }
+        return estatus;
+    }
+    public static int FinalizarCompra(Carro e){
+        int estatus=0;
+        
+        try{
+            Connection con=UsuarioDao.getConnection();
+            String q;
+            q="UPDATE item SET stock=stock-? WHERE id_item=?";
+
+            PreparedStatement ps=con.prepareStatement(q);
+            ps.setInt(1, e.getCantidad());
+            ps.setInt(2, e.getId_item());
+            
+            estatus=ps.executeUpdate();
+            
+            System.out.println("Conexion exitosa... (FinalizarCompra)");
+            
+            con.close();
+        
+        }catch(Exception d){
+            System.out.println("No hay conexion... (FinalizarCompra)");
             System.out.println(d.getMessage());
             System.out.println(d.getStackTrace());
         }
