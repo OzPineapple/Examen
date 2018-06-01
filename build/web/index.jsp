@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <body>
         <form method="post" action="LogIn">
-            Nombre de usuario: <input type="text" title="Solo caracteres alfanumericos" minlength="2" maxlength="40" name="user" required><br>
-            Contraseña: <input type="password" title="Solo caracteres alfanumericos" minlength="8" maxlength="20" name="pass" required><br>
+            Nombre de usuario: <input type="text" title="Solo caracteres alfanumericos" minlength="2" pattern="^[a-zA-Z]+(([ ][a-zA-Z])?[a-zA-Z]*)*$" title="Solo se aceptan caracteres alfabeticos" title="Solo caracteres alfanumericos" minlength="2" maxlength="40" name="user" required><br>
+            Contraseña: <input type="password" pattern="^[a-zA-Z1-9*!@&]+([a-zA-Z1-9*!@&]+)*$" title="Solo se aceptan caracteres alfanumericos y caracteres especiales como: !, @, &, *." minlength="8" maxlength="20" name="pass" required><br>
             <button type="submit"><i class="material-icons">input</i></button>
         </form>
         <br>

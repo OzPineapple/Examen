@@ -24,6 +24,10 @@
         <servlet-name>FinalizarCompra</servlet-name>
         <servlet-class>Servlets.FinalizarCompra</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgrStock</servlet-name>
+        <servlet-class>Servlets.AgrStock</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogIn</servlet-name>
         <url-pattern>/LogIn</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>FinalizarCompra</servlet-name>
         <url-pattern>/FinalizarCompra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgrStock</servlet-name>
+        <url-pattern>/AgrStock</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

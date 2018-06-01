@@ -139,7 +139,7 @@
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#costo<%=in%>"><i class="material-icons">edit</i></button>
                                         <div id="costo<%=in%>" class="collapse">
                                             <form method="post" action="EditCosto">
-                                                $<input type="number" maxlength="<%=maxlength%>" placeholder="Nuevo costo" name="agregar" min="1" max="<%=max%>" required>
+                                                $<input type="number" step=".01" placeholder="Nuevo costo" name="agregar" min="0.1" max="1000000" maxlength="7" required>
                                                 <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span> Ok</button>
                                             </form>
                                         </div>

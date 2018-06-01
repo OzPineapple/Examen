@@ -24,8 +24,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <body>
         <form method="post" action="RegUs2">
-            Nombre de usuario: <input type="text" title="Solo caracteres alfanumericos" minlength="2" maxlength="40" name="user" required><br>
-            Contraseña: <input type="password" title="Solo caracteres alfanumericos" minlength="8" maxlength="20" name="pass" required><br>
+            Nombre de usuario: <input type="text" title="Solo caracteres alfanumericos" minlength="2" pattern="^[a-zA-Z]+(([ ][a-zA-Z])?[a-zA-Z]*)*$" title="Solo se aceptan caracteres alfabeticos" maxlength="40" name="user" required><br>
+            Contraseña: <input type="password" pattern="^[a-zA-Z1-9*!@&]+([a-zA-Z1-9*!@&]+)*$" title="Solo se aceptan caracteres alfanumericos y caracteres especiales como: !, @, &, *." minlength="8" maxlength="20" name="pass" required><br>
             <button type="submit">Guardar <span class="glyphicon glyphicon-saved"></span></button>
         </form>
     </body>
