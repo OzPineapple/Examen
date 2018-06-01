@@ -39,7 +39,7 @@ public class LogIn extends HttpServlet {
                 response.addCookie(id_usCookie);
                 response.addCookie(id_tipoCookie);
                 response.addCookie(nomCookie);
-                response.sendRedirect("Admin.jsp");
+                response.sendRedirect("AdminCarro.jsp");
             }
             else if (id_tipo==2) {
                 Cookie id_usCookie = new Cookie("id_us",String.valueOf(e.getId_us()));
