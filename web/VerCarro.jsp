@@ -4,6 +4,7 @@
     Author     : Sarge
 --%>
 
+<%@page import="Clases.Item"%>
 <%@page import="Dao.UsuarioDao"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,6 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mi Carrito</title>
     </head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -71,16 +73,25 @@
                             <thead>
                             <tr>
                                 <th>Producto</th>
-                                <th>Cantidad</th>
+                                <th style="text-align: center;">Cantidad</th>
+                                <th style="text-align: center;">Costo Unitario</th>
+                                <th style="text-align: center;">Suma</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                 <%
+                            double total=0;
                             for (Carro e:carro) {
+                                Item item=new Item();
+                                item=UsuarioDao.getVItem(e.getId_item());
                 %>
                 <tr>
                     <td><%=e.getItem()%></td>
-                    <td><%=e.getCantidad()%></td>
+                    <td align="center"><%=e.getCantidad()%></td>
+                    <td align="center">$ <%=item.getCosto()%></td>
+                    <td align="center">$ <%=e.getCantidad()*item.getCosto()%></td>
+                    <%total=total+e.getCantidad()*item.getCosto();%>
                     <td>
                         <form method="post" action="EliminarDeMiCarrito">
                             <input type="hidden" name="index" value="<%=carro.indexOf(e)%>">
@@ -91,6 +102,20 @@
                 <%
                             }
                 %>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td align="right"><b>Total</b></td>
+                    <td align="center">$ <%=total%></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="center">
+                        <form method="post" action="FinalizarCompra">
+                            <button type="submit" class="btn btn-default btn-sm">Finalizar compra <i class="material-icons">attach_money</i></button>
+                        </form>
+                    </td>
+                </tr>
                         </tbody>
                         </table>
                 <%

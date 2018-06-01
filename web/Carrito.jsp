@@ -130,7 +130,7 @@
                                     <%
                                         if(i.getStock()>0){
                                     %>
-                                            <form method="post" action="VerItem.jsp"><input type="hidden" name="id" value="<%=i.getId_item()%>"><button type="submit" class="btn btn-default btn-sm"><i class="material-icons">attach_money</i></button></form>
+                                            <form method="post" action="VerItem.jsp"><input type="hidden" name="id" value="<%=i.getId_item()%>"><button type="submit" class="btn btn-default btn-sm"><i class="material-icons">add_shopping_cart</i></button></form>
                                     <%
                                         }
                                     %>

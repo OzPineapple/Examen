@@ -13,6 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ver Item</title>
     </head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -78,7 +79,7 @@
                                     <tr>
                                         <td colspan="2" align="center">
                                             <input type="hidden" name="id" value="<%=e.getId_item()%>">
-                                            <button type="submit" class="btn btn-default btn-sm">Agregar a mi carrito<span class="glyphicon glyphicon-ok"></span></button>
+                                            <button type="submit" class="btn btn-default btn-sm">Agregar a mi carrito<i class="material-icons">add_shopping_cart</i></button>
                                         </td>
                                     </tr>
                                 </tbody>
